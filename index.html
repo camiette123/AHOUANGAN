@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Église des Assemblées de Dieu - [Ville]</title>
+    <style>
+        /* CSS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+        }
+
+        .header {
+            background-color: #1a3a5c;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .navbar {
+            background-color: #2a5a7c;
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            margin: 0 1rem;
+        }
+
+        .hero {
+            height: 400px;
+            background: url('eglise-bg.jpg') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .section {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .event-card {
+            border: 1px solid #ddd;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 5px;
+        }
+
+        .footer {
+            background-color: #1a3a5c;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .navbar {
+                display: flex;
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>Église des Assemblées de Dieu</h1>
+        <p>[Ville/Nom de l'église]</p>
+    </header>
+
+    <nav class="navbar">
+        <a href="#accueil">Accueil</a>
+        <a href="#about">À propos</a>
+        <a href="#services">Cultes</a>
+        <a href="#events">Événements</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <div class="hero">
+        <h2>Bienvenue parmi nous</h2>
+        <p>"Venez à moi, vous tous qui êtes fatigués et chargés..." - Matthieu 11:28</p>
+        <button onclick="location.href='#services'" class="cta-button">Rejoignez-nous ce dimanche</button>
+    </div>
+
+    <section id="about" class="section">
+        <h2>Qui sommes-nous ?</h2>
+        <p>Nous sommes une communauté chrétienne évangélique affiliée aux Assemblées de Dieu...</p>
+    </section>
+
+    <section id="services" class="section">
+        <h2>Horaires des cultes</h2>
+        <div class="event-card">
+            <h3>Culte du dimanche</h3>
+            <p>Dimanche à 10h00</p>
+        </div>
+        <div class="event-card">
+            <h3>Réunion de prière</h3>
+            <p>Mercredi à 19h00</p>
+        </div>
+    </section>
+
+    <section id="events" class="section">
+        <h2>Événements à venir</h2>
+        <div id="events-container"></div>
+    </section>
+
+    <section id="contact" class="section">
+        <h2>Contact</h2>
+        <form id="contactForm">
+            <input type="text" placeholder="Nom" required>
+            <input type="email" placeholder="Email" required>
+            <textarea placeholder="Message" required></textarea>
+            <button type="submit">Envoyer</button>
+        </form>
+    </section>
+
+    <footer class="footer">
+        <p>© 2024 Église des Assemblées de Dieu - [Ville]</p>
+        <div class="social-links">
+            <a href="#">Facebook</a>
+            <a href="#">YouTube</a>
+        </div>
+    </footer>
+
+    <script>
+        // JavaScript pour les fonctionnalités de base
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Merci pour votre message! Nous vous répondrons bientôt.');
+            this.reset();
+        });
+
+        // Génération dynamique d'événements
+        const events = [
+            { title: "Campagne d'évangélisation", date: "15 Mars 2024", description: "Soirée spéciale d'évangélisation" },
+            { title: "Conférence pour les jeunes", date: "22 Mars 2024", description: "Thème: La foi en action" }
+        ];
+
+        const eventsContainer = document.getElementById('events-container');
+        events.forEach(event => {
+            const eventHTML = `
+                <div class="event-card">
+                    <h3>${event.title}</h3>
+                    <p><strong>Date:</strong> ${event.date}</p>
+                    <p>${event.description}</p>
+                </div>
+            `;
+            eventsContainer.innerHTML += eventHTML;
+        });
+
+        // Menu mobile
+        const navbar = document.querySelector('.navbar');
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768) {
+                navbar.style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>
